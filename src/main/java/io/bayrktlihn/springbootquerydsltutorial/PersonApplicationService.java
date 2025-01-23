@@ -29,7 +29,10 @@ public class PersonApplicationService {
         if (personQuery.getLastName() != null && !personQuery.getLastName().isEmpty()) {
             String lastName = personQuery.getLastName().toLowerCase(new Locale("tr", "TR"));
             if (booleanExpression == null) {
+                //BooleanExpression boolExp = Expressions.stringTemplate("REPLACE({0}, 'I', 'ı')", qUser.username).containsIgnoreCase(username);
+                
                 booleanExpression = QPerson.person.lastName.containsIgnoreCase(lastName);
+                
             } else {
                 booleanExpression = booleanExpression.and(QPerson.person.lastName.containsIgnoreCase(lastName));
             }
